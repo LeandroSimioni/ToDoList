@@ -16,6 +16,10 @@ body {
     justify-content: center;
 }
 
+input [type="text"] {
+    width: 100%;
+}
+
 main {
     background-color: aqua;
 
@@ -29,4 +33,21 @@ main {
 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.301);
     border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+}
+
+.tarefas {
+    flex-grow: 1;
+    background-color: bisque;
+}
+
+.nova-tarefa {
+    display: flex;
+    justify-content: space-between;
 }
