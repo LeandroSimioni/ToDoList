@@ -1,3 +1,27 @@
+:root {
+    --base-text-color: #EDE9FE;/* quase branco, com leve roxo */
+--base-background-color: #0F0A1F;/* roxo bem fechado, base do sistema */
+--painel-background-color: #18122B;/* roxo profundo para painéis */
+--tarefa-background-color: #231942;/* card roxo elegante */
+--tarefa-completa-background-color: #2E1065;/* roxo escuro para tarefa concluída */
+--tarefa-completa-status-background-color: #A78BFA;/* roxo clarondestaque limpo */
+--tarefa-incompleta-status-background-color: #F59E0B;/* âmbar clássico, contraste perfeito */
+--apagar-background-color: #7C1D1D;/* vermelho fechado, sem exagero */
+--adicionar-background-color: #02b83f;/* roxo vibrante, ação principal */
+}
+
+[data-theme="light"] {
+    --base-text-color: #2B2B2B;/* texto principal, leitura fácil */
+--base-background-color: #FFF7ED;/* off-white com fundo quente */
+--painel-background-color: #FFE8CC;/* laranja bem claro para painéis */
+--tarefa-background-color: #FFFFFF;/* card branco, clássico */
+--tarefa-completa-background-color: #DCFCE7;/* verde claro, sucesso visível */
+--tarefa-completa-status-background-color: #16A34A;/* verde forte, padrão universal */
+--tarefa-incompleta-status-background-color: #F97316;/* laranja principal */
+--apagar-background-color: #DC2626;/* vermelho direto e sem dó */
+--adicionar-background-color: #EA580C;/* laranja sólido, ação principal */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,8 +34,8 @@
 }
 
 body {
-    background-color: cadetblue;
-    color: #ffffff;
+    background-color: var(--base-background-color);
+    color: var(--base-text-color);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -21,14 +45,10 @@ body {
 input {
     width: 100%;
     padding: 0.5em;
-    background-color: rgb(33, 78, 48);
-    color: white;
+    background-color: var(--tarefa-background-color);
+    color: var(--base-text-color);
     border: none;
     border-radius: 5px;
-}
-
-input ::placeholder {
-    color: darkgray;
 }
 
 button {
@@ -41,7 +61,7 @@ button:hover{
 }
 
 main {
-    background-color: aqua;
+    background-color: var(--painel-background-color);
 
     width: 100%;
     max-width: 400px;
@@ -66,12 +86,68 @@ header {
 
 header h1 {
     margin-bottom: 0.25em;
+    color: var(--base-text-color);
 }
 
 .tarefas {
     flex-grow: 1;
-    background-color: bisque;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tarefa-background-color) var(--painel-background-color);
 }
+
+.tarefas ul {
+    list-style: none;
+}
+
+.tarefas li {
+    background-color: var(--tarefa-background-color);
+    padding: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 5px;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tarefas li.completa{
+    background-color: var(--tarefa-completa-background-color);
+}
+
+.tarefas li:last-child {
+    margin-bottom: 0;
+}
+
+.tarefas li .descricao {
+    flex-grow: 1;
+}
+
+.tarefas li .status {
+    text-wrap: nowrap;
+    background-color: var(--tarefa-incompleta-status-background-color);
+    padding: 0.5em;
+    font-size: 1em;
+    color: var(--base-text-color);
+    border-radius: 5px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.tarefas li.completa .status {
+    background-color: var(--tarefa-completa-status-background-color);
+}
+
+.tarefas li button {
+    text-wrap: nowrap;
+    background-color: var(--apagar-background-color);
+    border: none;
+    padding: 0.5em;
+    font-size: 1em;
+    color: var(--base-text-color);
+    border-radius: 5px;
+}
+
 
 .nova-tarefa {
     display: flex;
@@ -83,6 +159,6 @@ header h1 {
     padding: 0.5em 1em;
     border-radius: 5px;
     border: none;
-    background-color: rgb(24, 108, 181);
-    color: white;
+    background-color: var(--adicionar-background-color);
+    color: var(--base-text-color);
 }
